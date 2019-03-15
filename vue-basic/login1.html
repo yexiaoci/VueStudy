@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js表单练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.register{text-align:center;}
+			input{
+				display:block; 
+				width:250px; height:35px; 
+				line-height:40px; 
+				margin:0 auto; 
+				margin-bottom: 10px; 
+				outline:none; border:1px solid #888; 
+				padding:10px; 
+				box-sizing:border-box;
+				}
+			  button{
+				  display:block; 
+				  width:250px; height:35px; 
+				  line-height: 40px; margin:0 auto;
+				  border:none; 
+				  background-color:#41b883; 
+				  color:#fff; font-size:16px;
+				   margin-bottom:5px;
+				   }
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="username" placeholder="请输入用户名" ><br/>
+			<input type="password" v-model="password" placeholder="请输入密码" >
+			<hr>
+			<input type="radio" id="male" value="male" v-model="picked">
+			<label for="male">男</label>
+			<br>
+			<input type="radio" id="female" value="female" v-model="picked">
+			<label for="female">女</label>
+			<br>
+			<button type="button" @click="commit">提交</button>
+			<hr >
+			<h2>结果显示</h2>
+			<div class="result">
+				<p>姓名：{{message1}}</p>
+				<p>性别：{{picked}}</p>
+				<h3>爱好</h3>
+				<ul>
+					<li v-for="item in checkedNames">
+						{{item}}
+					</li>
+				</ul>
+				<p>班级：{{selected}}</p>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					username: '',
+					password: '',
+					checkedNames: [],
+					picked: 'male',
+					selected: ''
+				},
+				methods: {
+					commit: function() {
+						alert(this.username + this.password);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

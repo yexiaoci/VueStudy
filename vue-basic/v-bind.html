@@ -9,19 +9,18 @@
 	<body>
 		<!--vue-app的根容器-->
 		<div id="app">
-			
-			
-			
-	   </div>
+			 <h2>{{name}}<h2>
+			<img v-bind:src="cover" />
+            <img :src="cover" />
+        </div>
 	   <script type="text/javascript">
 	   	//实例化一个Vue对象
 		var app = new Vue({
 			el:'#app',
 			data:{
-				
-				
-			}
-			
+				name:'海边理发店',
+				cover:'img/book1.jpg'
+				}
 		})
 	   </script>
 	</body>

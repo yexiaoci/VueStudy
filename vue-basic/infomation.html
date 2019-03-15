@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>个人基本信息</title>
+		<!--通过CDN引入Vue.js-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+               body{
+	                width:100%;
+	                height:100%
+                    }
+			   h1{
+				   font-size:30px;
+				   color:#930;
+                   text-align:center;
+                }
+				#app{
+					text-align: center;
+					background-image: url(img/11.jpg);
+					background-position: center 0;
+					background-repeat:repeat;
+					}
+				.input{
+					background:rgb(241, 247, 235); 
+				}
+				.textarea{
+					background:rgb(241, 247, 235);
+					position: relative;
+					right:75px;
+				}
+				.select{
+					background:rgb(241, 247, 235);
+					
+				}
+				.label-name{
+					position: relative;
+					right:78px;
+					font-size:20px;
+				}
+				.avator-btn-fake{
+					position: relative;
+					left:7px;
+					font-size:15px;
+				}
+				
+			     .avator{
+					 text-align: center;
+				 }
+				 .username{
+					 position: relative;
+					 top:10px;
+					 font-size: 20px;
+					 }
+				.nicheng{
+					position: relative;
+					top:10px;
+					font-size: 20px;
+				}
+				.sex{
+					position: relative;
+					top:10px;
+					right:33px;
+					font-size: 20px;
+				}
+				.job{
+					position: relative;
+					top:10px;
+					right:18px;
+					font-size: 20px;
+				}
+				.hobbies{
+					position: relative;
+					top:10px;
+					left:7px;
+					font-size: 20px;
+			     }
+				 .qianming{
+					 position: relative;
+					 top:10px;
+					 left:112px;
+					 font-size: 20px;
+					 
+				 }
+				 button{
+					    display:block; 
+				 	    margin:0 auto;
+				 		border:none; 
+				 		background-color:#41b883; 
+				 		color:#fff; font-size:16px;
+						position: relative;
+						top:5px;
+						left:50px;
+					   }
+				</style>
+</head>
+	  <body>
+		 <div id="app">
+	          <div class="avator ">	  
+				  <div class="head">
+					 <h1>个人信息</h1>    
+                    <label class="label-name" for="job">头 像：</label>
+					</div>
+					  <div class="rlf-group">
+                          <img class="fl avator-img" id="js-portrait" src="img/img-3.jpg" width="110" height="110">
+                              <div class="avator-btn-wrap">
+                                 <form target="uploadtarget" action="postpic" method="post" enctype="multipart/form-data">
+                                    <a href="javascript:void(0)" hidefocus="true" class="avator-btn-fake">上传头像</a>
+                                        <input class="hide" type="file" title="上传头像" name="fileField" id="upload" accept="image/*">
+                                        <input class="hide" type="hidden" name="type" value="1">
+                                 </form>
+                                    <iframe src="about:blank" id="uploadtarget" name="uploadtarget" frameborder="0" style="display:none;"></iframe>
+                               </div>
+			        </div>
+					   
+
+			<form>
+               <div class="username">	   
+	          <label class="label" for="username">姓 名：</label>		      
+		      <input class="input" type="text" v-model="username" name="" id="username">
+			  </div>
+			  <br/>
+		 <div class="nicheng">
+			 <label for="nicheng">昵 称：</label>	    
+			 <input  class="input" type="text" v-model="nicheng" name="" id="nicheng">	 
+		 </div>
+			 <br />
+		<div class="sex">
+			    <label for="sex">性 别：</label>	
+			   <input  type="radio" id="male" value="男"   v-model="picked" >男		   
+			   <input type="radio" id="female" value="女" v-model="picked" >女
+		</div>
+		<br/>
+	   <div class="job">
+			<label for="jobs">职 业：</label> 
+			<select class="select"  v-model="selected" name="job">
+				<option value="">选择一个职业</option>
+			    <option value="Java前端">Java前端</option>		
+				<option value="全栈工程师">全栈工程师</option> 			 
+			    <option value="软件测试工程师">软件测试工程师</option>		
+				<option value="学生">学生</option>			 	
+			</select>		
+		</div>
+		<br>
+		
+		  <div class="hobbies">
+			  <label  for="hobbies">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;爱 好：</label> 
+			    <input type="checkbox" id="reading" value="阅读" v-model="checkedNames">
+			    <label for="baidu">阅读</label>
+			    <input type="checkbox" id="singing" value="唱歌" v-model="checkedNames">
+			    <label for="google">唱歌</label>
+			    <input type="checkbox" id="dancing" value="跳舞" v-model="checkedNames">
+			    <label for="google">跳舞</label>
+		 </div>	    
+			<div class="qianming">
+                   <label class="label-name" for="aboutme">签 名：</label>
+                  <textarea class="textarea" v-model="message2" rows="3" cols="25" id="intruduce">
+				  </textarea>
+			</div>
+			
+           <button type="button" @click="commit">提交</button>
+		</form> 
+		</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					username:'',
+					nicheng :'',
+					picked: 'male',
+					selected: '',
+					message2:'',
+					checkedNames:[]
+				},
+				methods: {
+					commit: function() {
+						alert("姓名:"+this.username
+						+"\n昵称：" + this.nicheng
+						+"\n性别:"+this.picked
+						+"\n职位:"+this.selected
+						+"\n爱好"+this.checkedNames
+						+"\n个性签名:"+this.message2);
+					}
+				}
+			})
+		</script>
+	</body>

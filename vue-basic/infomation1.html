@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>个人基本信息</title>
+		<!--通过CDN引入Vue.js-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			   h1{
+				   font-size:30px;
+				   color:#930;
+                   text-align:center;
+                }
+				
+				button{
+						display:block; 
+					    width:250px; height:30px; 
+						line-height: 40px; margin:0 auto;
+						border:none; 
+						background-color:#41b883; 
+						color:#fff; font-size:16px;
+						margin-bottom:5px;
+					   }
+				.avator{
+					text-align: center;
+					
+				}	  
+		</style>
+   </head>
+	  <body>
+		 <div id="app">
+	       <h1>infomation</h1>     	
+		      <div class="avator ">
+                    <label class="label-name" for="job">头像：</label>
+                       <div class="rlf-group">
+                          <img class="fl avator-img" id="js-portrait" src="img/img-3.jpg" width="120" height="120">
+                       </div>
+              </div>
+         <div class="username"></div>	   
+	          <label for="username">姓 名：</label>		      
+		      <input type="text" v-model="username"  id="username">
+		 </div> 
+		 <div>
+			 <label for="nicheng">昵 称：</label>		    
+			 <input type="text" v-model="nicheng"  id="nicheng">	 
+		 </div>	  
+		
+		<div class="sex">
+			    <label for="sex">性 别：</label>	
+			    <input type="radio" v-model="sex" name="性别">男		   
+			    <input type="radio" v-moudle="sex" name="性别">女
+		</div>
+		<div class="jobs">
+			<label for="jobs">职 位：</label> 
+			<select v-moudle="selected" name="job">	
+				<option value="学生">学生</option>	
+			    <option value="Java前端">Java前端</option>		
+				<option value="全栈工程师">全栈工程师</option> 			 
+			    <option value="软件测试工程师">软件测试工程师</option>		
+				<option selected>学生</option>	
+			</select>		
+		</div>
+		  <div class="hobbies">
+			  <label for="hobbies">爱 好：</label> 
+			    <input type="checkbox" id="reading" value="阅读" v-model="hobby">
+			    <label for="baidu">阅读</label>
+			    <input type="checkbox" id="singing" value="唱歌" v-model="hobby">
+			    <label for="google">唱歌</label>
+			    <input type="checkbox" id="dancing" value="跳舞" v-model="hobby">
+			    <label for="google">跳舞</label>
+		 </div>	     		  
+			<div class="intruduce">
+                   <label class="label-name" for="aboutme">个性签名：</label>
+                  <textarea v-model="message2" rows="3" cols="60" id="intruduce">
+				  </textarea>
+			</div>
+           <button type="button" @click="commit">提交</button>
+		</form> 
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					username: '',
+					nicheng : '',
+					sex: 'male',
+					selected: '',
+					hobby:[],
+					message2
+				},
+				methods: {
+					commit: function() {
+						alert("你的姓名是："this.username 
+						+"\n密码:"+ this.nicheng
+						+"\n性别:"+this.sex
+						+"\n职位是："+this.selected
+						+"\n兴趣爱好："+this.hobby
+						+"\n个人简介："+this.message2);
+					}
+				}
+			})
+		</script>
+	</body>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js computed计算购物车总价</title>
+		<!--通过CDN引入Vue.js-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script type="text/css">
+			.container{
+				diaplay:flex;
+				flex-direction:column;
+		     }
+			.item{
+			display:flex;
+			border:1px solid#008000;
+			borede-radius:10px;
+			width:300px;
+			height:50px;
+			margin-bottom：10px;
+			<!-- 垂直方向居中 -->
+			aligin-items:center;
+			/*水平方向居中*/
+			justify-content:center;
+			padding-left:10px;
+			padding-right:10px;
+		  } 
+		  item-id{
+			  flex:1 1 20%
+			  
+		  }
+		  item-name{
+			  flex:1 1 30%
+			  
+		  }
+		   item-prize{
+		  	  flex:1 1 20%	  
+		  }
+		  .item-count{
+		  }
+		 .goods-count{
+			 width:20px;
+		 }
+		  </script>
+	</head>
+	     
+	<body>
+		<!--vue-app的根容器-->
+		<div id="app">
+			<div class="container">
+				<div class="item" v-for="goods in goodlists">
+					<hr>
+					<h3>Total price</h3>
+					<p>{{totalPrice}}</p>
+				    <div class="item-id">
+					    {{goods.id}}
+				    </div>
+				    <div class="item-name">
+					    {{goods.name}}
+				    </div>
+				    <div class="item-price">
+					    {{goods.price}}
+				    </div>
+				    <div class="item-count">
+					    <button type="button" @click="goods.count-=1">-</button>
+					    <input type="text" v-model="goods.count" class="goods-count"/>
+					    <button type="button" @click="goods.count+=1">+</button>
+				   </div>
+			    </div>
+			</div>
+		</div>
+	   <script type="text/javascript">
+	   	//实例化一个Vue对象
+		var app = new Vue({
+			el:'#app',
+			data:{
+				goodsList:[
+					{
+						id:1,
+						name:'iphonex',
+						price:6000,
+						count:1
+					},
+					{
+						id:2,
+						name:'iphone7',
+						price:7000,
+						count:2
+					},
+					{
+						id:3,
+						name:'iphone8',
+						price:8000,
+						count:1
+					},
+				]
+			     
+				 },
+			methods:{
+				
+				},
+			computed:{
+				totalPrize:function(){
+					var totalPrice =0;
+					var len=this.goodsList.length;
+					for(var i=0,len=this.goodsList.length;i<len;i++){
+						  totalPrice+=this.goodsList[i].price*this.count;
+						  
+					}
+					return totalPrice;
+				}
+				
+				}
+				
+	        })
+	   </script>
+	</body>
+</html>

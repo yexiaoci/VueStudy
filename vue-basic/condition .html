@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--通过CDN引入Vue.js-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+					<style type="text/css">
+			.container{
+				width: 50%;
+				margin: 0 auto;
+			}
+			.top{
+				position: relative;
+				display: flex;
+				color:#DDDDDD;
+				width: 35%;
+				margin: 0 auto;
+				justify-content: space-between;
+				left:-55px
+			}
+			
+			.card{
+				width: 80%;
+				height: 80%;
+				display: flex;
+				justify-content: space-between;
+				border:1px ;
+				
+			}
+			
+			.right{
+				display: flex;
+				align-items: center;
+				padding-left: 9px;
+			}
+			
+			.left{
+				padding-right: 20px;
+				
+			}
+			.follow{
+				position: relative;
+				color: green;
+				top:18px;
+			}
+			.no-follow{
+				color: #DDDDDD;
+			}
+			
+			.words{
+				padding-left: 10px;
+			}
+			
+			.name{
+				position: relative;
+				font-weight: 800;
+				font-size: 16px;
+				top:12px;
+			}
+			
+			.card img{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+			}
+			.like{
+				position: relative;
+				font-size:15px;
+				margin-right:20px;
+				left: 100px;
+				top:-35px;
+			}
+			
+			
+			
+			
+		</style>
+	</head>
+	<body>
+			<div id="app">
+			<div class="top">
+				<p>推荐作者</p>
+			    <p>换一批</p>
+			</div>
+			
+	    <div class="container">
+				<div class="card" v-for="book in books">
+					<div class="right">
+						<img :src="book.cover" >
+					    <div class="words">
+							<div class="name">
+								<p>{{book.name}}</p>
+							</div>
+	 						<div class="zishu">
+								<p>写了{{book.zishu}}</p>
+							</div>
+							<div class="like">
+								<p>{{book.like}}喜欢</p>
+							</div>
+							
+						</div>
+						
+					</div>
+					<div class="left">
+						<p v-if="book.follow=== true" class="follow">+关注</p>
+						<p v-else class="no-follow">√已关注</p>
+					</div>
+				</div>
+				
+			</div>
+	    </div>
+		
+	   <script type="text/javascript">
+	   	//实例化一个Vue对象
+		var app = new Vue({
+			el:'#app',
+			data:{
+				show :true,
+				books:[
+					{ 
+					  cover: "img/w-01.jpg",
+					  name:"诗之源",
+					  zishu:"1412.k",
+					  like:"24.0",
+					  follow:false
+					},
+					{
+					  cover:"img/w-02.png",
+					  name:"简书大学堂",
+					  zishu:"1.2k",
+					  like:"1.3k",
+					  follow:false
+					  },
+					{
+						cover:"img/w-03.png",
+						name:"阿栈",
+						zishu:"462.2k",
+						like:"1.3k",
+						follow:true
+					},
+					{
+						cover: "img/w-04.jpg",
+						name:"胡七筒",
+						zishu:"327.7k",
+						like:"1.1k",
+						follow:true
+						
+					},
+					{
+						cover: "img/w-05.jpg",
+						name:"徐林Grace",
+						zishu:"677.9k",
+						like:"5.5k",
+						follow:true
+					}
+					
+				]
+			}
+		})
+	   </script>
+	</body>
+</html>
